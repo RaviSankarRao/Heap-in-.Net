@@ -5,13 +5,6 @@ VisualStudioVersion = 16.0.30204.51
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heap", "Heap\Heap.csproj", "{9D3E4823-FE92-4731-859F-BAE71E91471E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{08A46BA7-EFFA-4AF0-9228-0A699B015789}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\OneDrive\Office Lens\1. Binary Tree as Array.jpg = ..\..\..\OneDrive\Office Lens\1. Binary Tree as Array.jpg
-		..\..\..\OneDrive\Office Lens\2. Complete Binary Tree.jpg = ..\..\..\OneDrive\Office Lens\2. Complete Binary Tree.jpg
-		..\..\..\OneDrive\Office Lens\3. Heap and Insertion.jpg = ..\..\..\OneDrive\Office Lens\3. Heap and Insertion.jpg
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
