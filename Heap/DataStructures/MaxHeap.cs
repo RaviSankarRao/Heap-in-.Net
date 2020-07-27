@@ -39,7 +39,7 @@ namespace Heap.DataStructures
             int elementIndex = 0;
 
             // We assume it's always a complete Binary Tree and will have this
-            while(HasLeftChild(elementIndex))
+            while (HasLeftChild(elementIndex))
             {
                 var biggerIndex = GetLeftChildIndex(elementIndex);
                 if (HasRightChild(elementIndex) && comparer.Compare(GetRightChild(elementIndex), GetLeftChild(elementIndex)) > 0)

@@ -29,11 +29,11 @@ namespace Heap.DataStructures
             this.comparer = comparer;
         }
 
-        public int GetParentIndex(int elementIndex) => elementIndex / 2;
+        public int GetParentIndex(int elementIndex) => (elementIndex - 1) / 2;
 
-        public int GetLeftChildIndex(int elementIndex) => elementIndex * 2;
+        public int GetLeftChildIndex(int elementIndex) => 2 * elementIndex + 1;
 
-        public int GetRightChildIndex(int elementIndex) => (elementIndex * 2) + 1;
+        public int GetRightChildIndex(int elementIndex) => 2 * elementIndex + 2;
 
         public T GetLeftChild(int elementIndex) => _elements[GetLeftChildIndex(elementIndex)];
 

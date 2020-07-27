@@ -11,7 +11,7 @@ namespace Heap
     {
         static void Main(string[] args)
         {
-            MaxHeap<int> heap = new MaxHeap<int>();
+            MinHeap<int> heap = new MinHeap<int>();
             heap.Add(10);
             heap.Add(16);
             heap.Add(30);

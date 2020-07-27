@@ -10,12 +10,46 @@ namespace Heap.DataStructures
     {
         protected override void ReArrangeOnInsert()
         {
-            // TO DO
+            int elementIndex = _size - 1;
+            T element = _elements[elementIndex];
+
+            int parentIndex = GetParentIndex(elementIndex);
+            T parent = GetParent(elementIndex);
+
+            if (comparer.Compare(element, parent) == 0)
+                return;
+
+            while (comparer.Compare(element, parent) < 0)
+            {
+                Swap(elementIndex, parentIndex);
+
+                elementIndex = parentIndex;
+                parentIndex = GetParentIndex(elementIndex);
+                parent = GetParent(elementIndex);
+            }
         }
 
         protected override void ReArrangeOnDelete()
         {
-            // TO DO
+            int elementIndex = 0;
+
+            // We assume it's always a complete Binary Tree and will have this
+            while (HasLeftChild(elementIndex))
+            {
+                var smallerIndex = GetLeftChildIndex(elementIndex);
+                if (HasRightChild(elementIndex) && comparer.Compare(GetRightChild(elementIndex), GetLeftChild(elementIndex)) < 0)
+                {
+                    smallerIndex = GetRightChildIndex(elementIndex);
+                }
+
+                if (comparer.Compare(_elements[elementIndex], _elements[smallerIndex]) <= 0)
+                {
+                    break;
+                }
+
+                Swap(smallerIndex, elementIndex);
+                elementIndex = smallerIndex;
+            }
         }
     }
 }
