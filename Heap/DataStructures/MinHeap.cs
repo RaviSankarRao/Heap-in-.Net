@@ -11,7 +11,7 @@ namespace Heap.DataStructures
         protected override void ReArrangeOnInsert()
         {
             int elementIndex = _size - 1;
-            T element = _elements[elementIndex];
+            T element = list[elementIndex];
 
             int parentIndex = GetParentIndex(elementIndex);
             T parent = GetParent(elementIndex);
@@ -42,7 +42,7 @@ namespace Heap.DataStructures
                     smallerIndex = GetRightChildIndex(elementIndex);
                 }
 
-                if (comparer.Compare(_elements[elementIndex], _elements[smallerIndex]) <= 0)
+                if (comparer.Compare(list[elementIndex], list[smallerIndex]) <= 0)
                 {
                     break;
                 }

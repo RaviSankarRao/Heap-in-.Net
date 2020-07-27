@@ -12,20 +12,20 @@ namespace Heap.DataStructures
      */
     public abstract class Heap<T> where T : IComparable<T>
     {
-        protected List<T> _elements;
+        protected List<T> list;
         protected int _size;
 
         protected IComparer<T> comparer;
 
         public Heap()
         {
-            _elements = new List<T>();
+            list = new List<T>();
             comparer = Comparer<T>.Default;
         }
 
         public Heap(IComparer<T> comparer)
         {
-            _elements = new List<T>();
+            list = new List<T>();
             this.comparer = comparer;
         }
 
@@ -35,11 +35,11 @@ namespace Heap.DataStructures
 
         public int GetRightChildIndex(int elementIndex) => 2 * elementIndex + 2;
 
-        public T GetLeftChild(int elementIndex) => _elements[GetLeftChildIndex(elementIndex)];
+        public T GetLeftChild(int elementIndex) => list[GetLeftChildIndex(elementIndex)];
 
-        public T GetRightChild(int elementIndex) => _elements[GetRightChildIndex(elementIndex)];
+        public T GetRightChild(int elementIndex) => list[GetRightChildIndex(elementIndex)];
 
-        public T GetParent(int elementIndex) => _elements[GetParentIndex(elementIndex)];
+        public T GetParent(int elementIndex) => list[GetParentIndex(elementIndex)];
 
         public bool IsRoot(int elementIndex) => elementIndex == 0;
 
@@ -47,16 +47,16 @@ namespace Heap.DataStructures
 
         public bool HasRightChild(int elementIndex) => GetRightChildIndex(elementIndex) < _size;
         
-        public int Count => _elements.Count();
+        public int Count => list.Count();
 
         public bool IsEmpty => _size == 0;
 
         public T Peek()
         {
-            if (_elements.Count() == 0)
+            if (list.Count() == 0)
                 throw new IndexOutOfRangeException("Heap is empty");
 
-            return _elements[0];
+            return list[0];
         }
 
         public void Add(T element)
@@ -64,7 +64,7 @@ namespace Heap.DataStructures
             // Always insert at the last known index to maintain 
             //  - Continuity
             //  - Keep the heap as valid Complete Binary Tree
-            _elements.Add(element);
+            list.Add(element);
             _size++;
 
             // The heap has to be rearranged to maintain it's property of either Min/Max heap
@@ -77,11 +77,11 @@ namespace Heap.DataStructures
                 throw new IndexOutOfRangeException("Heap is empty");
 
             // The best place to pop a heap is always the root element
-            var result = _elements[0];
+            var result = list[0];
 
             // The last element is set made the root so that the heap remains a Complete Binary Tree
-            _elements[0] = _elements[_size - 1];
-            _elements.RemoveAt(_size - 1);
+            list[0] = list[_size - 1];
+            list.RemoveAt(_size - 1);
             _size--;
 
             // The heap has to be rearranged to maintain it's property of either Min/Max heap
@@ -92,9 +92,9 @@ namespace Heap.DataStructures
 
         protected void Swap(int firstIndex, int secondIndex)
         {
-            var temp = _elements[firstIndex];
-            _elements[firstIndex] = _elements[secondIndex];
-            _elements[secondIndex] = temp;
+            var temp = list[firstIndex];
+            list[firstIndex] = list[secondIndex];
+            list[secondIndex] = temp;
         }
 
         protected abstract void ReArrangeOnInsert();

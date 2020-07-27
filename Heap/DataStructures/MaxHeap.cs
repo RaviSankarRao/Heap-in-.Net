@@ -13,7 +13,7 @@ namespace Heap.DataStructures
         {
             // This is the last inserted element index
             int elementIndex = _size - 1;
-            T element = _elements[elementIndex];
+            T element = list[elementIndex];
 
             int parentIndex = GetParentIndex(elementIndex);
             T parent = GetParent(elementIndex);
@@ -47,7 +47,7 @@ namespace Heap.DataStructures
                     biggerIndex = GetRightChildIndex(elementIndex);
                 }
 
-                if (comparer.Compare(_elements[elementIndex], _elements[biggerIndex]) >= 0)
+                if (comparer.Compare(list[elementIndex], list[biggerIndex]) >= 0)
                 {
                     break;
                 }
