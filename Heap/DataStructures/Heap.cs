@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Heap.DataStructures
 {
@@ -29,24 +27,28 @@ namespace Heap.DataStructures
             this.comparer = comparer;
         }
 
-        public int GetParentIndex(int elementIndex) => (elementIndex - 1) / 2;
+        /*
+            For a given index i
+                - Left child is at 2i
+                - Right child is at 2i + 1
+                - Parent is at i/2 floor value
 
-        public int GetLeftChildIndex(int elementIndex) => 2 * elementIndex + 1;
+            Since in programming laguages index starts from 0,
+                - Left and right child positions are increamented by 1
+                - Parent decreased by 1 
+            to save us from checking exceptions
+        */
+        protected int GetParentIndex(int elementIndex) => (elementIndex - 1) / 2;
+        protected int GetLeftChildIndex(int elementIndex) => 2 * elementIndex + 1;
+        protected int GetRightChildIndex(int elementIndex) => 2 * elementIndex + 2;
 
-        public int GetRightChildIndex(int elementIndex) => 2 * elementIndex + 2;
+        protected T GetLeftChild(int elementIndex) => list[GetLeftChildIndex(elementIndex)];
+        protected T GetRightChild(int elementIndex) => list[GetRightChildIndex(elementIndex)];
+        protected T GetParent(int elementIndex) => list[GetParentIndex(elementIndex)];
 
-        public T GetLeftChild(int elementIndex) => list[GetLeftChildIndex(elementIndex)];
+        protected bool HasLeftChild(int elementIndex) => GetLeftChildIndex(elementIndex) < _size;
+        protected bool HasRightChild(int elementIndex) => GetRightChildIndex(elementIndex) < _size;
 
-        public T GetRightChild(int elementIndex) => list[GetRightChildIndex(elementIndex)];
-
-        public T GetParent(int elementIndex) => list[GetParentIndex(elementIndex)];
-
-        public bool IsRoot(int elementIndex) => elementIndex == 0;
-
-        public bool HasLeftChild(int elementIndex) => GetLeftChildIndex(elementIndex) < _size;
-
-        public bool HasRightChild(int elementIndex) => GetRightChildIndex(elementIndex) < _size;
-        
         public int Count => list.Count();
 
         public bool IsEmpty => _size == 0;

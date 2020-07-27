@@ -29,6 +29,7 @@ namespace Heap.DataStructures
             }
         }
 
+        // Heapify
         protected override void ReArrangeOnDelete()
         {
             int elementIndex = 0;

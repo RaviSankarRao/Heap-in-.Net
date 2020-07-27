@@ -8,7 +8,6 @@ namespace Heap.DataStructures
 {
     public class MaxHeap<T> : Heap<T> where T : IComparable<T>
     {
-        // Heapify Up
         protected override void ReArrangeOnInsert()
         {
             // This is the last inserted element index
@@ -31,7 +30,7 @@ namespace Heap.DataStructures
             }
         }
 
-        // Heapify Down
+        // Heapify
         protected override void ReArrangeOnDelete()
         {
             // After root pop, the last element was repalced with the root which is the smallest in the heap
